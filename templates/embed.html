@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+
+    <title>Waveforms</title>
+
+    {{ js_resources|indent(4)|safe }}
+
+    {{ css_resources|indent(4)|safe }}
+
+    {{ plot_script|indent(4)|safe }}
+
+  </head>
+  <body>
+    <!-- A simple form for changing the graph -->
+    <form name="wave_button" method='GET'>
+        Periodic waveform:
+          <select name="wave" id="wave">
+            <option selected="selected" value="sine"> Sine</option>
+            <option value="square"> Square</option>
+            <option value="triangle"> Triangle</option>
+            <option value="sawtooth"> Sawtooth</option>
+            <option value="full_rec"> Full Rectified Sine</option>
+            <option value="half_rec"> Half Rectified Sine</option>
+          </select>
+        <br>
+        <br>
+        Frequency [Hz]:
+          <input type="range" name="frequency" id="frequency" value="{{ frequency }}" min="50" max="1000" data-show-value="true">
+        <br>
+        Number of terms:
+          <input type="range" name="terms" id="terms" value="{{ terms }}" min="1" max="100" data-show-value="true">
+        <br>
+        <button type="submit" value="plot">Plot</button>
+        <button type="submit" value="audio">Audio</button>
+    </form>
+    {{ plot_div|indent(4)|safe }}
+  </body>
+</html>
